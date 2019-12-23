@@ -43,6 +43,7 @@ class Card extends React.Component {
     }
 
     render() {
+        console.log("render");
         return (
             <div>{this.props.number}</div>
         );
