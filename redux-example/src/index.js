@@ -3,4 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { createStore } from 'redux';
+import reducers from './reducers';
+import * as actions from './actions';
+
+const store = createStore(reducers);
+
+/*
+console.log(store.getState());
+const unsubscribe = store.subscribe(() => { console.log(store.getState()); });
+store.dispatch(actions.increment());
+store.dispatch(actions.increment());
+store.dispatch(actions.decrement());
+store.dispatch(actions.setColor([200, 200, 200]));
+
+unsubscribe();
+
+store.dispatch(actions.setColor([210, 210, 210]));
+*/
+
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);
