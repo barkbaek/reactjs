@@ -7,6 +7,8 @@ import bodyParser from 'body-parser'; // PARSE HTML BODY
 import mongoose from 'mongoose';
 import session from 'express-session';
 
+/* setup routers & static directory */
+import api from './routes';
 
 const app = express();
 const port = 3000;
@@ -30,8 +32,16 @@ app.use(session({
 
 app.use('/', express.static(path.join(__dirname, './../public')));
 
+app.use('/api', api);
+
 app.get('/hello', (req, res) => {
     return res.send('Hello CodeLab');
+});
+
+/* handle error */
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 app.listen(port, () => {
