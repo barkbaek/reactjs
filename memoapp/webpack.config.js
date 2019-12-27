@@ -2,6 +2,7 @@
  * Created by maway on 2019. 12. 20..
  */
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
     entry: './src/index.js',
@@ -28,9 +29,17 @@ module.exports = {
                     presets: ['es2015', 'stage-0', 'react']
                 })],
                 exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
             }
         ]
     },
+
+    /*resolve: {
+        root: path.resolve('./src')
+    },*/
 
     plugins: [
         new webpack.HotModuleReplacementPlugin()
